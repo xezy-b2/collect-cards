@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-ink text-parchment font-body;
+  background-image:
+    radial-gradient(circle at 2.5rem 100%, transparent 0.55rem, #11162C 0.6rem, #11162C 0.95rem, transparent 1rem),
+    radial-gradient(circle at 2.5rem 0%, transparent 0.55rem, #11162C 0.6rem, #11162C 0.95rem, transparent 1rem);
+  background-size: 5rem 6rem;
+  background-position: left center;
+}
+
+h1, h2, h3, .font-display {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+/* Effet "feuille de classeur" pour les panneaux de contenu */
+.binder-page {
+  @apply bg-parchment text-ink rounded-2xl shadow-2xl;
+}
+
+/* Petit reflet holographique au survol des cartes rares+ */
+@keyframes foil-shimmer {
+  0% { background-position: -150% 0; }
+  100% { background-position: 250% 0; }
+}
+
+.foil-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.55) 45%, rgba(108,74,182,0.35) 50%, rgba(255,255,255,0.55) 55%, transparent 70%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.foil-shimmer:hover::after {
+  opacity: 1;
+  animation: foil-shimmer 1.1s ease-in-out;
+}
